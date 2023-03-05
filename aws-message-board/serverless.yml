@@ -1,0 +1,26 @@
+org: greig
+app: aws-message-board
+service: aws-message-board
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  profile: default
+  region: eu-west-1
+  environment:
+    tableName: 'message_board'
+
+functions:
+  get-messages:
+    handler: src.get-messages.handler.handler
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  patterns:
+    - '!**'
+    - requirements.txt
+    - src/**
