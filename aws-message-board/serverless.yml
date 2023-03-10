@@ -10,7 +10,19 @@ provider:
   profile: default
   region: eu-west-1
   environment:
-    tableName: 'message_board'
+    tableName: 'message-board-dev'
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 
+            - 'dynamodb:Scan'
+            - 'dynamodb:GetItem'
+            - 'dynamodb:UpdateItem'
+            - 'dynamodb:DescribeTable'
+          Resource: 
+          - 'arn:aws:dynamodb:*:*:table/message-board-dev'
+
 
 functions:
   get-messages:

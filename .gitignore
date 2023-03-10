@@ -2,3 +2,6 @@
 __pycache__/
 node_modules/
 serverless_sdk/
+.terraform
+.terraform.lock.hcl
+terraform.tfstate*
