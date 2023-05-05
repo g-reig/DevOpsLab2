@@ -20,6 +20,7 @@ provider:
             - 'dynamodb:GetItem'
             - 'dynamodb:UpdateItem'
             - 'dynamodb:DescribeTable'
+            - 'dynamodb:PutItem'
           Resource: 
           - 'arn:aws:dynamodb:*:*:table/message-board-dev'
 
@@ -27,6 +28,10 @@ provider:
 functions:
   get-messages:
     handler: src.get-messages.handler.handler
+  get-threads:
+    handler: src.get-threads.handler.handler
+  put-messages:
+    handler: src.put-messages.handler.handler
 
 plugins:
   - serverless-python-requirements
