@@ -3,7 +3,8 @@ import os
 
 def handler(event, context):
     #event = {"threadId": "threadId"}
-    id = event.get('threadId')
+    id = event.get('queryStringParameters').get("threadId")
+    print(id)
     tableName = os.environ['tableName']
     dynamo = boto3.resource('dynamodb')
     table = dynamo.Table(tableName)

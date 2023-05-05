@@ -28,10 +28,16 @@ provider:
 functions:
   get-messages:
     handler: src.get-messages.handler.handler
+    events:
+      - httpApi: 'GET /messages'
   get-threads:
     handler: src.get-threads.handler.handler
+    events:
+      - httpApi: 'GET /threads'
   put-messages:
     handler: src.put-messages.handler.handler
+    events:
+      - httpApi: 'POST /messages'
 
 plugins:
   - serverless-python-requirements

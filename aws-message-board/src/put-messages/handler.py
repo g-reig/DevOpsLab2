@@ -1,12 +1,14 @@
 import boto3
 import os
+import json
 from uuid import uuid4
 
 def handler(event, context):
     # event = {"threadId": "threadId","author": "author", "message", "message"}
-    threadId = event.get('threadId', None) 
-    author = event.get('author', 'Anon')
-    message = event.get('message')
+    body = json.loads(event.get('body'))
+    threadId = body.get('threadId', None) 
+    author = body.get('author', 'Anon')
+    message = body.get('message')
     tableName = os.environ['tableName']
     dynamo = boto3.resource('dynamodb')
     table = dynamo.Table(tableName)
